@@ -26,11 +26,15 @@ class ReleaseCalendar::Release
   end
 
   def color
-    
+    @color ||= doc.css("p.style").text
   end
 
   def description
+    @description ||= doc.css("p.release-description").text
+  end
 
+  def doc
+    @doc ||= Nokogiri::HTML(open(self.url))
   end
   
 end
