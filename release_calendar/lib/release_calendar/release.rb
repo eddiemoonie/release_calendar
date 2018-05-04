@@ -6,10 +6,10 @@ class ReleaseCalendar::Release
 
   def self.new_from_index_page(s)
     self.new(
-      r.css("div.release-date-title").text.strip,
-      r.css("a").attr("href").text.strip,
-      r.css("p.att-val span").text.strip,
-      r.css("div.event-date.first-event").text.strip
+      s.css("div.release-date-title").text.strip,
+      s.css("a").attr("href").text.strip,
+      s.css("p.att-val span").text.strip,
+      s.css("div.event-date.first-event").text.strip
     )
   end
 
