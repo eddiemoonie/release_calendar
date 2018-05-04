@@ -11,6 +11,7 @@ class ReleaseCalendar::Scraper
   def make_sneakers
     scrape_sneakers_index.each do |s|
       ReleaseCalendar::Release.new_from_index_page(s)
+    end
   end
 
 
