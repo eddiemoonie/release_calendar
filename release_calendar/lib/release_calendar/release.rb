@@ -25,6 +25,10 @@ class ReleaseCalendar::Release
     @@all
   end
 
+  def self.find(id)
+    self.all[id-1]
+  end
+
   def color
     @color ||= doc.css("p.style").text
   end
@@ -36,6 +40,7 @@ class ReleaseCalendar::Release
   def doc
     @doc ||= Nokogiri::HTML(open(self.url))
   end
-  
+
 end
+
 
