@@ -5,7 +5,7 @@ class ReleaseCalendar::Scraper
   end
 
   def scrape_sneakers_index
-    self.get_page.css("div.release-date-title")
+    self.get_page.css("div.sneaker-section.row div.release-date-image-wrapper")
   end
 
   def make_sneakers
