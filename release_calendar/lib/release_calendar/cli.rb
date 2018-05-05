@@ -2,7 +2,7 @@ class ReleaseCalendar::CLI
 
   def call
     ReleaseCalendar::Scraper.new.make_sneakers
-    puts "Sneaker Release Calendar"
+    puts "  Welcome to the Sneaker Release Calendar"
     start
   end
 
@@ -58,3 +58,4 @@ class ReleaseCalendar::CLI
   end
 
 end
+
