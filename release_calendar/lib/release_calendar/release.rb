@@ -8,15 +8,13 @@ class ReleaseCalendar::Release
     self.new(
       s.css("div.release-date-title").text.strip,
       s.css("a").attribute("href").text.strip,
-      s.css("p.att-val span").text.strip,
       s.css("div.event-date.first-event").text.strip
     )
   end
 
-  def initialize(name=nil, url=nil, price=nil, date=nil)
+  def initialize(name=nil, url=nil, date=nil)
     @name =name
     @url = url
-    @price = price
     @date = date
     @@all << self
   end
@@ -34,7 +32,11 @@ class ReleaseCalendar::Release
   end
 
   def description
-    @description ||= doc.css("p.release-description").text
+    @description ||= doc.css("p.release-description").text.strip
+  end
+
+  def price
+    @price ||= doc.css("span").text.strip
   end
 
   def doc
