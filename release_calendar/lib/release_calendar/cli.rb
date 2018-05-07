@@ -24,8 +24,7 @@ class ReleaseCalendar::CLI
       start
     end
 
-    more_sneakers
-    
+    more_sneakers 
   end
 
   def print_sneakers_list
