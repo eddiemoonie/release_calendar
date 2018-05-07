@@ -2,6 +2,7 @@ class ReleaseCalendar::CLI
 
   def call
     ReleaseCalendar::Scraper.new.make_sneakers
+    puts ""
     puts "  Welcome to the Sneaker Release Calendar"
     start
   end
@@ -11,21 +12,28 @@ class ReleaseCalendar::CLI
 
     puts ""
     puts "Which sneaker release would you like to see?"
+    puts ""
+
     input = gets.strip.to_i
-
-    sneaker = ReleaseCalendar::Release.find(input)
-
-    print_sneaker_info(sneaker)
+    if input.between?(1,12)
+      sneaker = ReleaseCalendar::Release.find(input)
+      print_sneaker_info(sneaker)
+    else
+      puts ""
+      puts "INVALID OPTION. Please select again from the following:"
+      start
+    end
 
     puts ""
-    puts "Would you like to see another sneaker release? Enter Y or N"
+    puts "Would you like to see another sneaker release? (Enter Y or N)"
+    puts ""
 
     input = gets.strip.downcase
     if input == "y"
       start
     elsif input == "n"
       puts ""
-      puts "Thank you and GOOD LUCK!"
+      puts "Thank You and GOOD LUCK!"
       exit
     else
       puts ""
@@ -47,9 +55,11 @@ class ReleaseCalendar::CLI
     puts ""
     puts "-------- #{sneaker.name} --------"
     puts ""
-    puts "Color:          #{sneaker.color}"
-    puts "Release Date:   #{sneaker.date}"
-    puts "Retail Price:   #{sneaker.price}"
+    puts "COLOR:                  #{sneaker.color}"
+    puts "RELEASE DATE:           #{sneaker.date}"
+    puts "STYLE CODE:             #{sneaker.style_code}"
+    puts "RETAIL PRICE:           #{sneaker.price}"
+    puts "LINK(pics available):   #{sneaker.url}"
     puts ""
     puts "-------- Description --------"
     puts ""
