@@ -24,22 +24,8 @@ class ReleaseCalendar::CLI
       start
     end
 
-    puts ""
-    puts "Would you like to see another sneaker release? (Enter Y or N)"
-    puts ""
-
-    input = gets.strip.downcase
-    if input == "y"
-      start
-    elsif input == "n"
-      puts ""
-      puts "Thank You and GOOD LUCK!"
-      exit
-    else
-      puts ""
-      puts "Sorry, I couldn't understand."
-      start
-    end
+    more_sneakers
+    
   end
 
   def print_sneakers_list
@@ -65,6 +51,25 @@ class ReleaseCalendar::CLI
     puts ""
     puts "#{sneaker.description}"
     puts ""
+  end
+
+  def more_sneakers
+    puts ""
+    puts "Would you like to see another sneaker release? (Enter Y or N)"
+    puts ""
+
+    input = gets.strip.downcase
+    if input == "y"
+      start
+    elsif input == "n"
+      puts ""
+      puts "Thank You and GOOD LUCK!"
+      exit
+    else
+      puts ""
+      puts "Sorry, I couldn't understand."
+      more_sneakers
+    end
   end
 
 end
