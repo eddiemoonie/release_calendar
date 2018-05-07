@@ -1,6 +1,6 @@
 class ReleaseCalendar::Release
 
-  attr_accessor :name, :url, :price, :date, :color, :description
+  attr_accessor :name, :url, :price, :date, :color, :description, :style_code
 
   @@all = []
 
@@ -12,8 +12,8 @@ class ReleaseCalendar::Release
     )
   end
 
-  def initialize(name=nil, url=nil, date=nil)
-    @name =name
+  def initialize(name=nil, url=nil, date=nil, image=nil)
+    @name = name
     @url = url
     @date = date
     @@all << self
@@ -39,10 +39,13 @@ class ReleaseCalendar::Release
     @price ||= doc.css("span").text.strip
   end
 
+  def style_code
+    @style_code ||= doc.xpath("/html/body/div[3]/div[4]/div/div[1]/div/div[1]/div[3]/div[1]/div[2]/p[2]").text
+  end
+
   def doc
     @doc ||= Nokogiri::HTML(open(self.url))
   end
 
 end
-
 
